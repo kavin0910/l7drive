@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Seasonal Flavors</h2>
+<ul>
+    {% for offering in offerings %}
+        <li>
+            {{ offering.flavor }} - {{ 'Seasonal' if offering.is_seasonal else 'Regular' }}
+            <a href="/add_to_cart/{{ offering.id }}">Add to Cart</a>
+        </li>
+    {% endfor %}
+</ul>
+<h3>Suggest a New Flavor</h3>
+<form action="/suggest" method="post">
+    <label>Name: <input type="text" name="name" required></label>
+    <label>Allergen: <input type="text" name="allergen"></label>
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

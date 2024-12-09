@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Manage Offerings</h2>
+<form method="post">
+    <label>Flavor: <input type="text" name="flavor" required></label>
+    <label><input type="checkbox" name="seasonal"> Seasonal</label>
+    <button type="submit" name="add_flavor">Add Flavor</button>
+</form>
+<h2>Inventory</h2>
+<form method="post">
+    <label>Ingredient: <input type="text" name="ingredient" required></label>
+    <label>Quantity: <input type="number" name="quantity" required></label>
+    <button type="submit" name="add_ingredient">Add Ingredient</button>
+</form>
+<ul>
+    {% for item in inventory %}
+        <li>{{ item.ingredient }} - {{ item.quantity }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
